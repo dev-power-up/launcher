@@ -1,0 +1,104 @@
+#!/usr/bin/env sh
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+clear
+
+set -e
+unset CDPATH
+
+echo "   ___        _      _     ____           _            
+  / _ \ _   _(_) ___| | __/ ___|___ _ __ | |_ ___ _ __ 
+ | | | | | | | |/ __| |/ / |   / _ \ '_ \| __/ _ \ '__|
+ | |_| | |_| | | (__|   <| |___  __/ | | | |_  __/ |   
+  \__\_\\__,_|_|\___|_|\_\\____\___|_| |_|\__\___|_|   "
+
+warn () {
+    echo "$*"
+}
+
+die () {
+    echo
+    echo "$*"
+    echo
+    exit 1
+}
+
+function follow_links() {
+  cd -P "${1%/*}"
+  local file="$PWD/${1##*/}"
+  while [[ -h "$file" ]]; do
+    # On Mac OS, readlink -f doesn't work.
+    cd -P "${file%/*}"
+    file="$(readlink "$file")"
+    cd -P "${file%/*}"
+    file="$PWD/${file##*/}"
+  done
+  echo "$PWD/${file##*/}"
+}
+
+# Convert a filesystem path to a format usable by Dart's URI parser.
+function path_uri() {
+  # Reduce multiple leading slashes to a single slash.
+  echo "$1" | sed -E -e "s,^/+,/,"
+}
+
+function parse_env_properties_file() {
+    grep "${1}" "${ENV_PROPERTIES}"|sed -E 's/^[^=]*=(.*)$/\1/' 
+}
+
+function parse_product_properties_file() {
+    grep "${1}" "${PRODUCT_PROPERTIES}"|sed -E 's/^[^=]*=(.*)$/\1/' 
+}
+
+PROG_NAME="$(path_uri "$(follow_links "$BASH_SOURCE")")"
+BIN_DIR="$(cd "${PROG_NAME%/*}" ; pwd -P)"
+MY_ROOT="$(cd "${BIN_DIR}/.." ; pwd -P)"
+
+# TODO Extend to additional environments
+ENV_PROPERTIES="${MY_ROOT}/local.properties"
+
+# 3) set JDK (jdk 1.7 = 8, jdk 1.8 =9)
+# 4) call appropriate gw launcher (bin/gwpc = 8, gwb = 9)
+
+PRODUCTS_AVAILABLE=$(parse_env_properties_file 'available.products')
+
+if [ -z "$1" ]
+  then
+    die "Please supply one of these product types: $PRODUCTS_AVAILABLE"
+fi
+
+PRODUCT_CODE="$1.path" 
+PRODUCT_DIR=$(parse_env_properties_file $PRODUCT_CODE)
+RAW_DIR="`dirname "$PRODUCT_DIR"`"
+PRODUCT_DIR="$(path_uri "$(follow_links "$RAW_DIR")")"
+
+# Validate the path exists with the passes product code
+if [ ! -d "$PRODUCT_DIR" ] 
+  then
+    die "Please supply one of the available product types and ensure the directory 
+structure in the properties file is proper"
+fi
+
+# Retrieve the product major version in order to set the JDK and launch command
+PRODUCT_PROPERTIES="${PRODUCT_DIR}/modules/configuration/product.properties"
+PRODUCT_MAJORVERSION=$(parse_product_properties_file 'product.majorversion')
+
+JAVA_DIR="`dirname "$(parse_env_properties_file 'java18.path')"`"
+export JAVA_HOME="$(path_uri "$(follow_links "$JAVA_DIR")")"
+launcher="./gwb"
+
+# Set the JDK version based on the product
+if [[ "$PRODUCT_MAJORVERSION" == "8" ]]; then
+  JAVA_DIR="`dirname "$(parse_env_properties_file 'java17.path')"`"
+  export JAVA_HOME="$(path_uri "$(follow_links "$JAVA_DIR")")"
+  launcher="bin/gw${PRODUCT_CODE}"
+fi
+
+cd $PRODUCT_DIR
+
+eval $launcher $2
+
+# pwd -P
+
+# ./gwb $2
+# eval "gw"$PRODUCT $2
