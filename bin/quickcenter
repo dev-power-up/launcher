@@ -82,21 +82,24 @@ fi
 # Retrieve the product major version in order to set the JDK and launch command
 PRODUCT_PROPERTIES="${PRODUCT_DIR}/modules/configuration/product.properties"
 PRODUCT_MAJORVERSION=$(parse_product_properties_file 'product.majorversion')
-PRODUCT_MINORVERSION=$(parse_product_properties_file 'product.minorversion')
+PRODUCT_PATCHVERSION=$(parse_product_properties_file 'product.patchversion')
 
 # Set the JDK version based on the product
-if "$PRODUCT_MAJORVERSION" == "10" && "$PRODUCT_MINORVERSION" == "2"; then
-  JAVA_DIR="$(dirname "$(parse_env_properties_file 'java11.path')")"
+if [ "$PRODUCT_MAJORVERSION" == "10" ] && [ "$PRODUCT_PATCHVERSION" == "2" ]; then
+  JAVA_PROP="java11.path"
   launcher="./gwb"
-elif "$PRODUCT_MAJORVERSION" == "8"; then
-  JAVA_DIR="$(dirname "$(parse_env_properties_file 'java17.path')")"
+elif [ "$PRODUCT_MAJORVERSION" == "8" ] ; then
+  JAVA_PROP="java17.path"
   launcher="bin/gw'${PRODUCT_CODE}'"
 else
-  JAVA_DIR="$(dirname "$(parse_env_properties_file 'java18.path')")"
+  JAVA_PROP="java18.path"
   launcher="./gwb"
 fi
 
+# JAVA_DIR="$(dirname "$(parse_env_properties_file 'java17.path')")"
+JAVA_DIR="$(parse_env_properties_file "$JAVA_PROP")"
 JDK_HOME="$(path_uri "$(follow_links "$JAVA_DIR")")"
+
 export JAVA_HOME=$JDK_HOME
 
 cd "$PRODUCT_DIR"
