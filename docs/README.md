@@ -59,22 +59,65 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
 
 ## Quick Start
 
-The core executables file are `quickcenter.cmd` and `quickcenter.sh`. The commands require two arguments.
+The core scripts are `quickcenter.cmd` and `quickcenter.sh`, which require two arguments: a product code and the Guidewire task.
 
+```bash
+quickcenter product-code gw-task
+```
 
+Thus, to start PolicyCenter Studio, run the respective command:
 
-
+**Windows**
 ```bash
 quickcenter.cmd pc studio
 ```
-
+**macOS**
 ```bash
 ./quickcenter pc studio
 ```
 
-One alternative is to call QuickCenter from another batch file, such as the example in `quickcenter-launcher`. 
+
+## TL:DR
+The product code are established in the ```local.properties``` file with the code to the left of the period, such as ```bc.path```. (This was done in the Setup portion of this README.)
+
+The gw-task that is passed to the Guidewire application can be any of the tasks that are available to the Guidewire application. Common tasks are items such as ```runServer```, ```studio```, and ```compile```.
+
+To view the list of available tasks in version 9 and 10 of the Guidewire platform, run the following command:
+
+Windows
+```bash
+quickcenter pc gwTasks
+```
+macOS
+```bash
+./quickcenter pc gwTasks
+```
+
+## Other Ways to Use Launch
+One alternative is to call QuickCenter from another script, such as the example in `quickcenter-launcher`. 
 
 Create an alias of the product and command:
+
+**macOS**
+```bash
+cd Guidewire/QuickCenter/launcher/bin/
+ln -s quickcenter-launcher pc-runServer
+```
+
+Add the folder to the search path
+```bash
+export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"
+```
+
+Run the alias from the terminal anywhere:
+```bash
+sh pc-gwTasks
+```
+
+Or, run the shell script:
+```bash
+sh quickcenter bc studio
+```
 
 **Windows**
 
