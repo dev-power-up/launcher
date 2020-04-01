@@ -6,7 +6,7 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
 
 ## Features
 - Compatible with InsuranceSuite products version 8, 9, and 10
-- Use scripts in conjunction with products such as LaunchBar (macOS) and Launchy (Windows) to launch products and processes with just a few keystrokes
+- Use scripts in conjunction with application launchers, such as [LaunchBar (macOS)](https://www.obdev.at/products/launchbar/index.html) and [Listary (Windows)](https://www.listary.com/), to dramatically increase productivity
 - Launch from the Windows command shell or macOS Terminal
 - Create shortcuts/alias and launch from the UI
 - Support for Windows, macOS, and Linux
@@ -15,7 +15,7 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
 
 1. Copy or clone the QuickCenter project into the parent folder along with the Guidewire applications. 
    
-   QuickCenter can exist in any location, but it may be helpful to maintain this structure if multiple projects or workspaces exist. For example, some may have the Guidewire base configuration available locally as well as the suite of configured code. 
+    QuickCenter can exist in any location, but it may be helpful to maintain this structure if multiple projects or workspaces exist. For example, some may have the Guidewire base configuration available locally as well as the suite of configured code. 
 
     ```text
     └── Guidewire
@@ -29,6 +29,7 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
 
 2. Modify the InsuranceSuite paths and available products in the `local.properties` file. 
    
+    - Ensure ```local.properties``` use ```LF``` line ending characters and not  ```CRLF```.
     - Use the full canonical path name for your operating system. Be sure to terminate folder listings with a trailing slash or backslash.
     - Ensure any spaces are escaped.
 
@@ -46,6 +47,7 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
 
 3. Set the location of JDKs in the `local.properties` file. 
 
+    - Ensure ```local.properties``` use ```LF``` line ending characters and not  ```CRLF```.
     - If using multiple base platforms of the Guidewire InsuranceSuite, specify the JDK locations accordingly.
     - The JDK path supplants any environment-wide JAVA_HOME specification at run time.
 
@@ -59,11 +61,7 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
 
 ## Quick Start
 
-The core scripts are `quickcenter.cmd` and `quickcenter.sh`, which require two arguments: a product code and the Guidewire task.
-
-```bash
-quickcenter product-code gw-task
-```
+The core QuickCenter launch scripts (`quickcenter.cmd` and `quickcenter.sh`) require two arguments: a product code and the Guidewire task.
 
 Thus, to start PolicyCenter Studio, run the respective command:
 
@@ -73,64 +71,57 @@ quickcenter.cmd pc studio
 ```
 **macOS**
 ```bash
-./quickcenter pc studio
+sh quickcenter pc studio
 ```
 
 
-## TL:DR
-The product code are established in the ```local.properties``` file with the code to the left of the period, such as ```bc.path```. (This was done in the Setup portion of this README.)
+## Why Product Codes and Tasks?
+The product code are established in the ```local.properties``` file with the code to the left of the period, such as ```bc.path```. (Completed in the Setup portion of this README.)
 
-The gw-task that is passed to the Guidewire application can be any of the tasks that are available to the Guidewire application. Common tasks are items such as ```runServer```, ```studio```, and ```compile```.
+The gw-task passed to the Guidewire application can be any of the tasks available to the Guidewire application. Common tasks are items such as ```runServer```, ```studio```, and ```compile```.
 
 To view the list of available tasks in version 9 and 10 of the Guidewire platform, run the following command:
 
-Windows
+**Windows**
 ```bash
 quickcenter pc gwTasks
 ```
-macOS
+**macOS**
 ```bash
-./quickcenter pc gwTasks
+sh quickcenter pc gwTasks
 ```
 
-## Other Ways to Use Launch
+## Other Ways to Use Launcher
 One alternative is to call QuickCenter from another script, such as the example in `quickcenter-launcher`. 
 
-Create an alias of the product and command:
+1. Create an alias of the product and command:
 
-**macOS**
-```bash
-cd Guidewire/QuickCenter/launcher/bin/
-ln -s quickcenter-launcher pc-runServer
-```
+    **macOS**
+    ```bash
+    cd Guidewire/QuickCenter/launcher/bin/
+    ln -s quickcenter-launcher pc-runServer
+    ```
 
-Add the folder to the search path
-```bash
-export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"
-```
+2. Add the folder to the search path:
 
-Run the alias from the terminal anywhere:
-```bash
-sh pc-gwTasks
-```
+    **macOS**
 
-Or, run the shell script:
-```bash
-sh quickcenter bc studio
-```
+    ```bash
+    export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"
+    ```
 
-**Windows**
+3. Launch the symlink from the terminal anywhere:
 
-```bash
-quickcenter.cmd pc gwTasks --more
-quickcenter.cmd bc studio
-quickcenter.cmd cc8 compile
-```
+    **macOS**
 
-**macOS**
+    ```bash
+    sh pc-gwTasks
+    ```
 
-```bash
-./quickcenter pc gwTasks --more
-./quickcenter bc studio
-./quickcenter cc8 compile
-```
+4. Or, launch the QuickCenter script directly by supplying the  and any Guidewire task:
+
+    **macOS**
+
+    ```bash
+    sh quickcenter bc studio
+    ```
