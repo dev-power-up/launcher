@@ -22,56 +22,40 @@ die() {
   exit 1
 }
 
-follow_links() {
-  cd -P "${1%/*}"
-  file="$PWD/${1##*/}"
-  while [[ -L "$file" ]]; do
-    # On Mac OS, readlink -f doesn't work.
-    cd -P "${file%/*}"
-    file="$(readlink "$file")"
-    cd -P "${file%/*}"
-    file="$PWD/${file##*/}"
-  done
-  echo "$PWD/${file##*/}"
-}
-
-# Convert a filesystem path to a format usable by Dart's URI parser.
-path_uri() {
-  # Reduce multiple leading slashes to a single slash.
-  echo "$1" | sed -E -e "s,^/+,/,"
-}
-
 parse_env_properties_file() {
-  grep "${1}" "${ENV_PROPERTIES}" | sed -E 's/^[^=]*=(.*)$/\1/'
+  # grep "${1}" "${ENV_PROPERTIES}" | sed -E 's/^[^=]*=(.*)$/\1/'
+  grep "${1}" "${ENV_PROPERTIES}"|cut -d'=' -f2-
 }
 
 parse_product_properties_file() {
-  grep "${1}" "${PRODUCT_PROPERTIES}" | sed -E 's/^[^=]*=(.*)$/\1/'
+  # grep "${1}" "${PRODUCT_PROPERTIES}" | sed -E 's/^[^=]*=(.*)$/\1/'
+  grep "${1}" "${PRODUCT_PROPERTIES}"|cut -d'=' -f2-
 }
 
-PROG_NAME="$(path_uri "$(follow_links "${BASH_SOURCE[0]}")")"
-BIN_DIR="$(
-  cd "${PROG_NAME%/*}"
-  pwd -P
-)"
-MY_ROOT="$(
-  cd "${BIN_DIR}/.."
-  pwd -P
-)"
+
+MY_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+# echo "$MY_ROOT"
 
 # TODO Extend to additional environments
-ENV_PROPERTIES="${MY_ROOT}/local.properties"
-
+ENV_PROPERTIES="${MY_ROOT}/../local.properties"
 PRODUCTS_AVAILABLE=$(parse_env_properties_file 'available.product.codes')
 
+# echo "$ENV_PROPERTIES"
 if [ -z "$1" ]; then
   die "Please supply one of these product types: $PRODUCTS_AVAILABLE"
+elif [ -z "$2" ]; then
+  die "Please supply a valid task"
 fi
 
 PRODUCT_CODE="$1.path"
 PRODUCT_DIR=$(parse_env_properties_file "$PRODUCT_CODE")
-RAW_DIR="$(dirname "$PRODUCT_DIR")"
-PRODUCT_DIR="$(path_uri "$(follow_links "$RAW_DIR")")"
+GW_PRODUCT=${PRODUCT_CODE%.*}
+
+echo  Launching "$GW_PRODUCT" "$2"
+echo "======================================================================"
+echo
+# echo "$PRODUCT_DIR"
 
 # Validate the path exists with the passes product code
 if [ ! -d "$PRODUCT_DIR" ]; then
@@ -80,11 +64,10 @@ structure in the properties file is proper"
 fi
 
 # Retrieve the product major version in order to set the JDK and launch command
-PRODUCT_PROPERTIES="${PRODUCT_DIR}/modules/configuration/product.properties"
+PRODUCT_PROPERTIES="${PRODUCT_DIR}modules/configuration/product.properties"
 PRODUCT_MAJORVERSION=$(parse_product_properties_file 'product.majorversion')
 PRODUCT_PATCHVERSION=$(parse_product_properties_file 'product.patchversion')
 
-# echo "$PRODUCT_DIR"
 # echo "$PRODUCT_PROPERTIES"
 # echo "$PRODUCT_MAJORVERSION"
 # echo "$PRODUCT_PATCHVERSION"
@@ -102,21 +85,8 @@ else
 fi
 
 JAVA_DIR="$(parse_env_properties_file "$JAVA_PROP")"
-SAVED="$(pwd)"
-cd "$(dirname \"$JAVA_DIR\")/" >/dev/null
-JAVA_DIR_FIX="$(pwd -P)"
-cd "$SAVED" >/dev/null
-
-echo "$JAVA_DIR_PROP"
-echo "$JAVA_DIR_FIX"
-echo "$SAVED"
-
-JDK_HOME="$(path_uri "$(follow_links "$JAVA_DIR_FIX")")"
-
-echo "$JDK_HOME"
-
-export JAVA_HOME=$JDK_HOME
+export JAVA_HOME=$JAVA_DIR
 
 cd "$PRODUCT_DIR"
 
-eval "$launcher" "$2" "$3"
+eval "$launcher" "$2" "$3" "$4"
