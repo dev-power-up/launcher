@@ -28,8 +28,7 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
     ```
 
 2. Modify the InsuranceSuite paths and available products in the `local.properties` file. 
-   
-    !> Ensure ```local.properties``` uses ```LF``` line ending characters and not  ```CRLF```.
+
     - Use the full canonical path name for your operating system. Be sure to terminate folder listings with a trailing slash or backslash.
     - Ensure any spaces are escaped.
 
@@ -47,7 +46,6 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
 
 3. Set the location of JDKs in the `local.properties` file. 
 
-    !> Ensure ```local.properties``` uses ```LF``` line ending characters and not  ```CRLF```.
     - If using multiple base platforms of the Guidewire InsuranceSuite, specify the JDK locations accordingly.
     - The JDK path supplants any environment-wide JAVA_HOME specification at run time.
 
@@ -58,24 +56,23 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
     java11.path=/Library/Java/JavaVirtualMachines/jdk-11.0.6.jdk/Contents/Home/
     ```
 
+!> Ensure ```local.properties``` uses ```LF``` line ending characters and not  ```CRLF```.
+
 
 ## Quick Start
 
-The core QuickCenter launch scripts (`quickcenter.cmd` and `quickcenter.sh`) require two arguments: a product code and the Guidewire task.
-
-Thus, to start PolicyCenter Studio, run the respective command:
+The core QuickCenter launch scripts (`quickcenter.cmd` and `quickcenter.sh`) require two arguments: a product code and the Guidewire task. Thus, to start PolicyCenter Studio, run the respective command:
 
 **Windows**
-```bash
-quickcenter.cmd pc studio
-```
+
+```quickcenter.cmd pc studio```
+
 **macOS**
-```bash
-sh quickcenter pc studio
-```
+
+```sh quickcenter pc studio```
 
 
-## Why Product Codes and Tasks?
+## Product Codes and Tasks
 The product code are established in the ```local.properties``` file with the code to the left of the period, such as ```bc.path```. (Completed in the Setup portion of this README.)
 
 The gw-task passed to the Guidewire application can be any of the tasks available to the Guidewire application. Common tasks are items such as ```runServer```, ```studio```, and ```compile```.
@@ -83,45 +80,49 @@ The gw-task passed to the Guidewire application can be any of the tasks availabl
 To view the list of available tasks in version 9 and 10 of the Guidewire platform, run the following command:
 
 **Windows**
-```bash
-quickcenter pc gwTasks
-```
+
+```quickcenter pc gwTasks```
+
 **macOS**
-```bash
-sh quickcenter pc gwTasks
-```
+
+```sh quickcenter pc gwTasks```
 
 ## Other Ways to Use Launcher
-One alternative is to call QuickCenter from another script, such as the example in `quickcenter-launcher`. 
 
-1. Create an alias of the product and command:
+### Launch QuickCenter Directly
 
-    **macOS**
-    ```bash
-    cd Guidewire/QuickCenter/launcher/bin/
-    ln -s quickcenter-launcher pc-runServer
-    ```
-
-2. Add the folder to the search path:
+1. Add the folder to the search path:
 
     **macOS**
 
-    ```bash
-    export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"
-    ```
+    ```export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"```
+
+2. Launch the script from the terminal anywhere by supplying the product and any Guidewire task:
+
+    **macOS**
+
+    ```sh quickcenter bc studio```
+
+### Launch Using a Secondary Task Script
+
+Call QuickCenter from another script or synlink and pass the required arugments. See the example in `quickcenter-launcher`. 
+
+1. Add the folder to the search path:
+
+    **macOS**
+
+    ```export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"```
+
+2. Create an alias of the product and command:
+
+    **macOS**
+
+    ```cd Guidewire/QuickCenter/launcher/bin/```
+
+    ```ln -s quickcenter-launcher pc-runServer```
 
 3. Launch the symlink from the terminal anywhere:
 
     **macOS**
 
-    ```bash
-    sh pc-gwTasks
-    ```
-
-4. Or, launch the QuickCenter script directly by supplying the  and any Guidewire task:
-
-    **macOS**
-
-    ```bash
-    sh quickcenter bc studio
-    ```
+    ```sh pc-gwTasks```
