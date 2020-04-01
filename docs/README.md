@@ -29,7 +29,7 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
 
 2. Modify the InsuranceSuite paths and available products in the `local.properties` file. 
    
-    - Ensure ```local.properties``` use ```LF``` line ending characters and not  ```CRLF```.
+    !> Ensure ```local.properties``` uses ```LF``` line ending characters and not  ```CRLF```.
     - Use the full canonical path name for your operating system. Be sure to terminate folder listings with a trailing slash or backslash.
     - Ensure any spaces are escaped.
 
@@ -47,7 +47,7 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
 
 3. Set the location of JDKs in the `local.properties` file. 
 
-    - Ensure ```local.properties``` use ```LF``` line ending characters and not  ```CRLF```.
+    !> Ensure ```local.properties``` uses ```LF``` line ending characters and not  ```CRLF```.
     - If using multiple base platforms of the Guidewire InsuranceSuite, specify the JDK locations accordingly.
     - The JDK path supplants any environment-wide JAVA_HOME specification at run time.
 
