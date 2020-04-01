@@ -84,6 +84,11 @@ PRODUCT_PROPERTIES="${PRODUCT_DIR}/modules/configuration/product.properties"
 PRODUCT_MAJORVERSION=$(parse_product_properties_file 'product.majorversion')
 PRODUCT_PATCHVERSION=$(parse_product_properties_file 'product.patchversion')
 
+# echo "$PRODUCT_DIR"
+# echo "$PRODUCT_PROPERTIES"
+# echo "$PRODUCT_MAJORVERSION"
+# echo "$PRODUCT_PATCHVERSION"
+
 # Set the JDK version based on the product
 if [ "$PRODUCT_MAJORVERSION" == "10" ] && [ "$PRODUCT_PATCHVERSION" == "2" ]; then
   JAVA_PROP="java11.path"
@@ -96,9 +101,19 @@ else
   launcher="./gwb"
 fi
 
-# JAVA_DIR="$(dirname "$(parse_env_properties_file 'java17.path')")"
 JAVA_DIR="$(parse_env_properties_file "$JAVA_PROP")"
-JDK_HOME="$(path_uri "$(follow_links "$JAVA_DIR")")"
+SAVED="$(pwd)"
+cd "$(dirname \"$JAVA_DIR\")/" >/dev/null
+JAVA_DIR_FIX="$(pwd -P)"
+cd "$SAVED" >/dev/null
+
+echo "$JAVA_DIR_PROP"
+echo "$JAVA_DIR_FIX"
+echo "$SAVED"
+
+JDK_HOME="$(path_uri "$(follow_links "$JAVA_DIR_FIX")")"
+
+echo "$JDK_HOME"
 
 export JAVA_HOME=$JDK_HOME
 
