@@ -15,4 +15,4 @@ A collection of launch tools for Guidewire Software.
 
 ## About QuickCenter
 
-QuickCenter is a set of tools developers use with Guidewire Software implementations. Please see the other open source projects [here](https://github.com/QuickCenter).
+QuickCenter is a set of tools developers use with Guidewire Software implementations. More tools are on their way!
