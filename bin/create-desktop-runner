@@ -1,0 +1,54 @@
+#!/usr/bin/env sh
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+clear
+set -e
+unset CDPATH
+
+DIVIDERS="======================================================================"
+
+echo "   ___        _      _     ____           _            
+  / _ \ _   _(_) ___| | __/ ___|___ _ __ | |_ ___ _ __ 
+ | | | | | | | |/ __| |/ / |   / _ \ '_ \| __/ _ \ '__|
+ | |_| | |_| | | (__|   <| |___  __/ | | | |_  __/ |   
+  \__\_\\__,_|_|\___|_|\_\\____\___|_| |_|\__\___|_|   "
+echo
+echo  Creating QuickCenter Launcher desktop runner...
+echo $DIVIDERS
+echo
+warn() {
+	echo "$*"
+}
+
+die() {
+	echo
+	echo "$*"
+	echo
+	exit 1
+}
+
+parse_env_properties_file() {
+	grep "${1}" "${ENV_PROPERTIES}"|cut -d'=' -f2-
+}
+
+MY_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ENV_PROPERTIES="${MY_ROOT}/../local.properties"
+PRODUCTS_AVAILABLE=$(parse_env_properties_file 'available.product.codes')
+
+echo "What is the product code ($PRODUCTS_AVAILABLE)?"
+read -r GWPRODUCT
+
+if [ -z "$GWPRODUCT" ]; then
+	die "A product type was not entered, so we're exiting. Please try again."
+fi	
+
+echo "What is the Guidewire task?"
+read -r GWCOMMAND
+
+if [ -z "$GWCOMMAND" ]; then
+	die "A Guidewire task was not enter so we're exiting. Please try again!"
+fi
+
+# create the shell script
+echo -e "#!/usr/bin/env sh\nsh quickcenter "$GWPRODUCT" "$GWCOMMAND"" > ~/Desktop/"$GWPRODUCT"-"$GWCOMMAND".sh
+chmod 755 ~/Desktop/"$GWPRODUCT"-"$GWCOMMAND".sh
