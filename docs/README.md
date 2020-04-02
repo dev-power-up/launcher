@@ -1,8 +1,8 @@
 # QuickCenter Launcher
-> Launch your Guidewire Software applications and invoke tasks with a few keystrokes project.
+> Launch your Guidewire Software applications and tasks fast!
 
 ## What is it?
-QuickCenter Launcher is a collection of launch tools for Guidewire Software InsuranceSuite products that will save time throughout a developer's daily workflow. 
+QuickCenter Launcher is a collection of launch tools for Guidewire Software InsuranceSuite applications and tasks that will save time throughout a developer's daily workflow. 
 
 ## Features
 - Compatible with InsuranceSuite products version 8, 9, and 10
