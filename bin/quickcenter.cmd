@@ -1,13 +1,12 @@
+REM cd c:\Guidewire\QuickCenter\launcher\bin
+
 @ECHO OFF
 CLS
-echo "   ___        _      _     ____           _            
-  / _ \ _   _(_) ___| | __/ ___|___ _ __ | |_ ___ _ __ 
- | | | | | | | |/ __| |/ / |   / _ \ '_ \| __/ _ \ '__|
- | |_| | |_| | | (__|   <| |___  __/ | | | |_  __/ |   
-  \__\_\\__,_|_|\___|_|\_\\____\___|_| |_|\__\___|_|   "
-echo
-SETLOCAL ENABLEEXTENSIONS
+SETLOCAL ENABLEEXTENSIONS ENABLEDELAYEDEXPANSION
+
+:VARIABLES
 SET cmdname=%~n0
+SET parent=%~dp0
 
 IF {%1}=={}   GOTO :HELP
 IF {%2}=={}   GOTO :HELP
@@ -33,16 +32,47 @@ ECHO   ------------------------------------------------------
 ECHO   Running %1 %2 . . . 
 ECHO   ------------------------------------------------------
 ECHO.
-FOR /F "tokens=1,2 delims==" %%G IN (launch.properties) DO (set %%G=%%H)  
 
-SET product=%1
-IF /I "%product%"=="bc" (CD %bc%)
-IF /I "%product%"=="cc" (CD %cc%)
-IF /I "%product%"=="pc" (CD %pc%)
-IF /I "%product%"=="cm" (CD %cm%)
+set GW_PRODUCT=%1
 
+REM Retrieve all keys from local.properties and make them variables
+FOR /F "tokens=1,2 delims==" %%G IN (..\local.properties) DO (set %%G=%%H)  
 
-gwb %2 %3 %4 %5 %6 %7
+REM Get the product directory from local.properties
+FOR /F "tokens=1,2 delims==" %%G IN (..\local.properties) DO (IF /I %GW_PRODUCT%.path==%%G (set PRODUCT_DIR=%%H)) 
+
+echo Launching %GW_PRODUCT% %2
+echo ======================================================================
+
+IF NOT EXIST %PRODUCT_DIR% (
+    ECHO %~n0: folder not found - %PRODUCT_DIR% >&2
+)
+
+SET PRODUCT_PROPERTIES=%PRODUCT_DIR%modules\configuration\product.properties
+
+REM Get all of the Java properties (java18, java11, java17)
+FOR /F "tokens=1,2 delims==" %%G IN (%PRODUCT_PROPERTIES%) DO (set %%G=%%H)
+
+REM Set the JDK version and launcher based on the product
+SET JAVA_DIR=%java18.path%
+SET LAUNCHER=gwb.bat
+
+IF %product.majorversion%==10 (  
+    IF %product.patchversion% == 2 (
+        SET JAVA_DIR=%java11.path%
+    )
+)
+IF %product.majorversion% == 8 (
+    set JAVA_DIR=%java11.path%
+    set LAUNCHER=bin\gw%product.code%.bat
+)
+
+SET JAVA_HOME=%JAVA_DIR%
+SET Path=%JAVA_HOME%\bin;%Path%
+
+REM LAUNCH!
+cd %PRODUCT_DIR%
+%LAUNCHER% %2 %3 %4 %5 %6 %7
 
 :DONE
 ENDLOCAL
