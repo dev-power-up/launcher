@@ -19,12 +19,12 @@ QuickCenter can exist in any location, but it may be helpful to maintain this st
 
 ```text
 └── Guidewire
-├── BillingCenter
-├── ClaimCenter
-├── ClaimCenter8
-├── ContactManager
-├── PolicyCenter
-└── QuickCenter
+    ├── BillingCenter
+    ├── ClaimCenter
+    ├── ClaimCenter8
+    ├── ContactManager
+    ├── PolicyCenter
+    └── QuickCenter
 ```
 
 2. Modify the InsuranceSuite paths and available products in the `local.properties` file. 
