@@ -15,17 +15,17 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
 
 1. Copy or clone the QuickCenter project into the parent Guidewire folder. 
    
-    QuickCenter can exist in any location, but it may be helpful to maintain this structure if multiple projects or workspaces exist. For example, some may have the Guidewire base configuration available locally as well as the suite of configured code. 
+QuickCenter can exist in any location, but it may be helpful to maintain this structure if multiple projects or workspaces exist. For example, some may have the Guidewire base configuration available locally as well as the suite of configured code. 
 
-    ```text
-    └── Guidewire
-        ├── BillingCenter
-        ├── ClaimCenter
-        ├── ClaimCenter8
-        ├── ContactManager
-        ├── PolicyCenter
-        └── QuickCenter
-    ```
+```text
+└── Guidewire
+    ├── BillingCenter
+    ├── ClaimCenter
+    ├── ClaimCenter8
+    ├── ContactManager
+    ├── PolicyCenter
+    └── QuickCenter
+```
 
 2. Modify the InsuranceSuite paths and available products in the `local.properties` file. 
 
@@ -34,44 +34,46 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
     - Properties must be unique.
     - The product code (left side of the period of the product path key) can be any designator. If working with multiple projects or workspaces, it may make sense to create a key related to that project.
 
-    **Windows**
-    ```
-    # InsuranceSuite paths
-    pc.path=c:\Guidewire\PolicyCenter\
-    pcbase.path=c:\Guidewire\PolicyCenterBase1002\
-    bc.path=c:\Guidewire\BillingCenter\
-    
-    # Availability 
-    available.product.codes=pc,pcbase,bc
-    ```
 
-    **macOS**
-    ```bash
-    # InsuranceSuite paths
-    bc.path=/Users/jpollone/Guidewire/BillingCenter/
-    cc.path=/Users/jpollone/Guidewire/ClaimCenter/
-    cc8.path=/Users/jpollone/Guidewire/ClaimCenter8/
-    cm.path=/Users/jpollone/Guidewire/ContactManager/
-    pc.path=/Users/jpollone/Guidewire/PolicyCenter/
+**Windows**
+```text
+# InsuranceSuite paths
+pc.path=c:\Guidewire\PolicyCenter\
+pcbase.path=c:\Guidewire\PolicyCenterBase1002\
+bc.path=c:\Guidewire\BillingCenter\
 
-    # Availability 
-    available.product.codes=bc,cc,cc8,cm,pc
-    ```
-    If the repository is a clone, set the local git index to ignore any changes to this file:
+# Availability 
+available.product.codes=pc,pcbase,bc
+```
+
+**macOS**
+```text
+# InsuranceSuite paths
+bc.path=/Users/jpollone/Guidewire/BillingCenter/
+cc.path=/Users/jpollone/Guidewire/ClaimCenter/
+cc8.path=/Users/jpollone/Guidewire/ClaimCenter8/
+cm.path=/Users/jpollone/Guidewire/ContactManager/
+pc.path=/Users/jpollone/Guidewire/PolicyCenter/
+
+# Availability 
+available.product.codes=bc,cc,cc8,cm,pc
+```
+
+!> If the repository is a clone, set the local git index to ignore any changes to this file:
     
-    ```git update-index --assume-unchanged local.properties```
+```git update-index --assume-unchanged local.properties```
 
 3. Set the location of JDKs in the `local.properties` file. 
 
     - If using multiple base platforms of the Guidewire InsuranceSuite, specify the JDK locations accordingly.
     - The JDK path supplants any environment-wide JAVA_HOME specification at run time.
 
-    ```bash
-    # JDKs
-    java18.path=/Library/Java/JavaVirtualMachines/jdk1.8.0_241.jdk/Contents/Home/
-    java17.path=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/
-    java11.path=/Library/Java/JavaVirtualMachines/jdk-11.0.6.jdk/Contents/Home/
-    ```
+```text
+# JDKs
+java18.path=/Library/Java/JavaVirtualMachines/jdk1.8.0_241.jdk/Contents/Home/
+java17.path=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/
+java11.path=/Library/Java/JavaVirtualMachines/jdk-11.0.6.jdk/Contents/Home/
+```
 
 !> Ensure ```local.properties``` uses ```LF``` line ending characters and not  ```CRLF```.
 
@@ -110,19 +112,19 @@ To view the list of available tasks in version 9 and 10 of the Guidewire platfor
 
 1. Add the folder to the search path:
 
-    **Windows**
+**Windows**
 
-    ```export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"```
+```export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"```
 
-    **macOS**
+**macOS**
 
-    ```export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"```
+```export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"```
 
 2. Launch the script from the terminal anywhere by supplying the product and any Guidewire task:
 
-    **macOS**
+**macOS**
 
-    ```sh quickcenter bc studio```
+```sh quickcenter bc studio```
 
 ### Launch Using a Secondary Task Script
 
@@ -130,38 +132,38 @@ Call QuickCenter from another script or alias/synlink and pass the required arug
 
 1. Add the folder to the search path:
 
-    **Windows**
+**Windows**
 
-    ```SET Path=c:\Guidewire\QuickCenter\launcher\bin;%Path%```
+```SET Path=c:\Guidewire\QuickCenter\launcher\bin;%Path%```
 
-    **macOS**
+**macOS**
 
-    ```export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"```
+```export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"```
 
 2. Create an alias of the product and command:
 
-    **Windows**
+**Windows**
 
-    ```cd C:\Guidewire\QuickCenter\launcher\bin```
+```cd C:\Guidewire\QuickCenter\launcher\bin```
 
-    ```mklink pc-gwTasks.bat quickcenter-launcher.cmd```
+```mklink pc-gwTasks.bat quickcenter-launcher.cmd```
 
-    **macOS**
+**macOS**
 
-    ```cd Guidewire/QuickCenter/launcher/bin/```
+```cd Guidewire/QuickCenter/launcher/bin/```
 
-    ```ln -s quickcenter-launcher pc-runServer```
+```ln -s quickcenter-launcher pc-runServer```
 
 3. Launch the alias/symlink from the command prompt/terminal in any location:
 
-    **Windows**
+**Windows**
 
-    ```pc-gwTasks.bat```
+```pc-gwTasks.bat```
 
-    The macOS command can launch from any path Terminal window.
-    **macOS**
+The macOS command can launch from any path Terminal window.
+**macOS**
 
-    ```sh pc-gwTasks```
+```sh pc-gwTasks```
 
 
 ### Launch with the Mouse (macOS only)
@@ -172,11 +174,11 @@ Use the utility `quickcreate-desktop-runner` to create a shell script icon on th
 
 1. Using the Terminal, change the active folder to the QuickCenter Launcher bin: 
 
-    ```cd Guidewire/QuickCenter/launcher/bin/```
+```cd Guidewire/QuickCenter/launcher/bin/```
 
 2. Run the command: 
 
-    ```sh create-desktop-runner```
+```sh create-desktop-runner```
 
 3. The utility will prompt for the product code. Enter an appropriate code, such as ```pc```.
 
