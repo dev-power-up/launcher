@@ -13,7 +13,7 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
 
 ## Setup
 
-1. Copy or clone the QuickCenter project into the parent folder along with the Guidewire applications. 
+1. Copy or clone the QuickCenter project into the parent Guidewire folder. 
    
     QuickCenter can exist in any location, but it may be helpful to maintain this structure if multiple projects or workspaces exist. For example, some may have the Guidewire base configuration available locally as well as the suite of configured code. 
 
@@ -30,8 +30,22 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
 2. Modify the InsuranceSuite paths and available products in the `local.properties` file. 
 
     - Use the full canonical path name for your operating system. Be sure to terminate folder listings with a trailing slash or backslash.
-    - Ensure any spaces are escaped.
+    - Unused products/JDKs can be removed. 
+    - Properties must be unique.
+    - The product code (left side of the period of the product path key) can be any designator. If working with multiple projects or workspaces, it may make sense to create a key related to that project.
 
+    **Windows**
+    ```
+    # InsuranceSuite paths
+    pc.path=c:\Guidewire\PolicyCenter\
+    pcbase.path=c:\Guidewire\PolicyCenterBase1002\
+    bc.path=c:\Guidewire\BillingCenter\
+    
+    # Availability 
+    available.product.codes=pc,pcbase,bc
+    ```
+
+    **macOS**
     ```bash
     # InsuranceSuite paths
     bc.path=/Users/jpollone/Guidewire/BillingCenter/
@@ -100,7 +114,6 @@ To view the list of available tasks in version 9 and 10 of the Guidewire platfor
 
     ```export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"```
 
-
     **macOS**
 
     ```export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"```
@@ -155,7 +168,7 @@ Call QuickCenter from another script or alias/synlink and pass the required arug
 
 Use the utility `quickcreate-desktop-runner` to create a shell script icon on the Desktop.
 
->! Ensure Terminal has proper permissions to access the Desktop.
+!> Ensure Terminal has proper permissions to access the Desktop.
 
 1. Using the Terminal, change the active folder to the QuickCenter Launcher bin: 
 
