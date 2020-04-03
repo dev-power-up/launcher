@@ -65,7 +65,7 @@ The core QuickCenter launch scripts (`quickcenter.cmd` and `quickcenter.sh`) req
 
 **Windows**
 
-```quickcenter.cmd pc studio```
+```quickcenter pc studio```
 
 **macOS**
 
@@ -93,6 +93,11 @@ To view the list of available tasks in version 9 and 10 of the Guidewire platfor
 
 1. Add the folder to the search path:
 
+    **Windows**
+
+    ```export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"```
+
+
     **macOS**
 
     ```export PATH="$PATH:~/Guidewire/QuickCenter/launcher/bin"```
@@ -105,9 +110,13 @@ To view the list of available tasks in version 9 and 10 of the Guidewire platfor
 
 ### Launch Using a Secondary Task Script
 
-Call QuickCenter from another script or synlink and pass the required arugments. See the example in `quickcenter-launcher`. 
+Call QuickCenter from another script or alias/synlink and pass the required arugments. See the example in `quickcenter-launcher`. 
 
 1. Add the folder to the search path:
+
+    **Windows**
+
+    ```SET Path=c:\Guidewire\QuickCenter\launcher\bin;%Path%```
 
     **macOS**
 
@@ -115,14 +124,46 @@ Call QuickCenter from another script or synlink and pass the required arugments.
 
 2. Create an alias of the product and command:
 
+    **Windows**
+
+    ```cd C:\Guidewire\QuickCenter\launcher\bin```
+
+    ```mklink pc-gwTasks.bat quickcenter-launcher.cmd```
+
     **macOS**
 
     ```cd Guidewire/QuickCenter/launcher/bin/```
 
     ```ln -s quickcenter-launcher pc-runServer```
 
-3. Launch the symlink from the terminal anywhere:
+3. Launch the alias/symlink from the command prompt/terminal:
 
+    **Windows**
+
+    ```pc-gwTasks.bat```
+
+    The macOS command can launch from any path Terminal window.
     **macOS**
 
     ```sh pc-gwTasks```
+
+
+### Launch with the Mouse (macOS only)
+
+Use the utility `quickcreate-desktop-runner` to create a shell script icon on the Desktop.
+
+>! Ensure Terminal has proper permissions to access the Desktop.
+
+1. Using the Terminal, change the active folder to the QuickCenter Launcher bin: 
+
+    ```cd Guidewire/QuickCenter/launcher/bin/```
+
+2. Run the command: 
+
+    ```sh create-desktop-runner```
+
+3. The utility will prompt for the product code. Enter an appropriate code, such as ```pc```.
+
+4. The utility will prompt for a Guidewire task. Enter an appropriate task, such as ```studio```.
+
+An icon is created on the Desktop and can be clicked to launch the appropriate task.
