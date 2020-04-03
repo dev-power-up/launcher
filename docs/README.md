@@ -136,7 +136,7 @@ Call QuickCenter from another script or alias/synlink and pass the required arug
 
     ```ln -s quickcenter-launcher pc-runServer```
 
-3. Launch the alias/symlink from the command prompt/terminal:
+3. Launch the alias/symlink from the command prompt/terminal in any location:
 
     **Windows**
 
