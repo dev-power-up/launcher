@@ -43,6 +43,9 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
     # Availability 
     available.product.codes=bc,cc,cc8,cm,pc
     ```
+    If the repository is a clone, set the local git index to ignore any changes to this file:
+    
+    ```git update-index --assume-unchanged local.properties```
 
 3. Set the location of JDKs in the `local.properties` file. 
 
