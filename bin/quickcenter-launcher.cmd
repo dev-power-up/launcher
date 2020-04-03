@@ -1,6 +1,6 @@
 @ECHO OFF
 CLS
-SETLOCAL ENABLEEXTENSIONS
+SETLOCAL ENABLEEXTENSIONS ENABLEDELAYEDEXPANSION
 
 FOR /f "tokens=1,2 delims=-" %%a IN ("%~n0") DO SET product=%%a&SET command=%%b
 
@@ -23,10 +23,9 @@ ECHO.
 GOTO :DONE
 
 :START
-CALL quickcenter %product% %command%  -x compile
+CALL quickcenter %product% %command% %3 %4 %5 %6 %7
 
 ECHO.
 ECHO.
-PAUSE. >nul | ECHO.FINISHED! Press something to continue . . .
 
 :DONE

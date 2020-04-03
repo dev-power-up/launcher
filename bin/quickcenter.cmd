@@ -1,5 +1,3 @@
-REM cd c:\Guidewire\QuickCenter\launcher\bin
-
 @ECHO OFF
 CLS
 SETLOCAL ENABLEEXTENSIONS ENABLEDELAYEDEXPANSION
@@ -34,12 +32,12 @@ ECHO   ------------------------------------------------------
 ECHO.
 
 set GW_PRODUCT=%1
-
+SET LOCAL_PROPS=%parent%..\local.properties
 REM Retrieve all keys from local.properties and make them variables
-FOR /F "tokens=1,2 delims==" %%G IN (..\local.properties) DO (set %%G=%%H)  
+FOR /F "tokens=1,2 delims==" %%G IN (%LOCAL_PROPS%) DO (set %%G=%%H)  
 
 REM Get the product directory from local.properties
-FOR /F "tokens=1,2 delims==" %%G IN (..\local.properties) DO (IF /I %GW_PRODUCT%.path==%%G (set PRODUCT_DIR=%%H)) 
+FOR /F "tokens=1,2 delims==" %%G IN (%LOCAL_PROPS%) DO (IF /I %GW_PRODUCT%.path==%%G (set PRODUCT_DIR=%%H)) 
 
 echo Launching %GW_PRODUCT% %2
 echo ======================================================================
