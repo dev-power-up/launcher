@@ -10,6 +10,6 @@
   * [Command Line](usage/command-line)
   * [Task Script](usage/task-script)
   * [Mouse](usage/mouse)
-  * [Launchbar](usage/app-launcher)
+  * [App Launcher](usage/app-launcher)
 * **Credits**
   * [Credits](/credits)
