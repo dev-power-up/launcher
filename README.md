@@ -2,8 +2,6 @@
 
 A collection of launch tools for Guidewire Software.
 
-> Haven't initialized your system yet? Check out the [QuickCenter Initialize](https://quickcenter.github.io/initialize/) guide.
-
 ## Documentation
 
 * [QuickCenter Launcher](https://quickcenter.github.io/launcher/)
@@ -14,6 +12,8 @@ A collection of launch tools for Guidewire Software.
 - Launch from the Windows command shell or macOS Terminal
 - Create shortcuts/alias and launch from the UI
 - Support for Windows, macOS, and Linux
+
+> Haven't initialized your system yet? Check out the [QuickCenter Initialize](https://quickcenter.github.io/initialize/) guide.
 
 ## About QuickCenter
 
