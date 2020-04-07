@@ -6,11 +6,12 @@ QuickCenter can exist in any location, but it may be helpful to maintain this st
 
 ```text
 └── Guidewire
-    ├── BillingCenter
-    ├── ClaimCenter
-    ├── ClaimCenter8
-    ├── ContactManager
-    ├── PolicyCenter
+    └── Suite
+        ├── BillingCenter
+        ├── ClaimCenter
+        ├── ClaimCenter8
+        ├── ContactManager
+        ├── PolicyCenter
     └── QuickCenter
 ```
 
@@ -25,9 +26,9 @@ QuickCenter can exist in any location, but it may be helpful to maintain this st
 **Windows**
 ```text
 # InsuranceSuite paths
-pc.path=c:\Guidewire\PolicyCenter\
-pcbase.path=c:\Guidewire\PolicyCenterBase1002\
-bc.path=c:\Guidewire\BillingCenter\
+pc.path=c:\Guidewire\Suite\PolicyCenter\
+bc.path=c:\Guidewire\Suite\BillingCenter\
+pcbase.path=c:\Guidewire\Suite-SB\PolicyCenter\
 
 # Availability 
 available.product.codes=pc,pcbase,bc
@@ -36,11 +37,11 @@ available.product.codes=pc,pcbase,bc
 **macOS**
 ```text
 # InsuranceSuite paths
-bc.path=/Users/jpollone/Guidewire/BillingCenter/
-cc.path=/Users/jpollone/Guidewire/ClaimCenter/
-cc8.path=/Users/jpollone/Guidewire/ClaimCenter8/
-cm.path=/Users/jpollone/Guidewire/ContactManager/
-pc.path=/Users/jpollone/Guidewire/PolicyCenter/
+bc.path=/Users/jpollone/Guidewire/Suite/BillingCenter/
+cc.path=/Users/jpollone/Guidewire/Suite/ClaimCenter/
+cc8.path=/Users/jpollone/Guidewire/Suite/ClaimCenter8/
+cm.path=/Users/jpollone/Guidewire/Suite/ContactManager/
+pc.path=/Users/jpollone/Guidewire/Suite/PolicyCenter/
 
 # Availability 
 available.product.codes=bc,cc,cc8,cm,pc
