@@ -2,9 +2,9 @@
 
 A collection of launch tools for Guidewire Software.
 
-## Documentation
-
 > Haven't initialized your system yet? Check out the [QuickCenter Initialize](https://quickcenter.github.io/initialize/) guide.
+
+## Documentation
 
 * [QuickCenter Launcher](https://quickcenter.github.io/launcher/)
 
