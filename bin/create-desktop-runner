@@ -7,13 +7,9 @@ unset CDPATH
 
 DIVIDERS="======================================================================"
 
-echo "   ___        _      _     ____           _            
-  / _ \ _   _(_) ___| | __/ ___|___ _ __ | |_ ___ _ __ 
- | | | | | | | |/ __| |/ / |   / _ \ '_ \| __/ _ \ '__|
- | |_| | |_| | | (__|   <| |___  __/ | | | |_  __/ |   
-  \__\_\\__,_|_|\___|_|\_\\____\___|_| |_|\__\___|_|   "
+
 echo
-echo  Creating QuickCenter Launcher desktop runner...
+echo  Creating Dev Power-Up! Launcher desktop runner...
 echo $DIVIDERS
 echo
 warn() {
@@ -50,5 +46,5 @@ if [ -z "$GWCOMMAND" ]; then
 fi
 
 # create the shell script
-echo -e "#!/usr/bin/env sh\nsh quickcenter "$GWPRODUCT" "$GWCOMMAND"" > ~/Desktop/"$GWPRODUCT"-"$GWCOMMAND".sh
+echo -e "#!/usr/bin/env sh\nsh launcher "$GWPRODUCT" "$GWCOMMAND"" > ~/Desktop/"$GWPRODUCT"-"$GWCOMMAND".sh
 chmod 755 ~/Desktop/"$GWPRODUCT"-"$GWCOMMAND".sh

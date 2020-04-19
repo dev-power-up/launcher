@@ -1,11 +1,11 @@
 ![logo](_assets/zoomzoom.svg ":size=150")
 
-# QuickCenter Launcher
+# Dev Power-Up! Launcher
 
 > Launch your Guidewire Software apps and tasks fast!
 
 
-[GitHub](https://github.com/QuickCenter/launcher)
+[GitHub](https://github.com/dev-power-up/launcher)
 [Get Started](#what-is-it)
 
 

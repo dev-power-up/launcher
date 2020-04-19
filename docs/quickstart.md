@@ -1,14 +1,14 @@
 # Quick Start Basics
 
-The core QuickCenter launch scripts (`quickcenter.cmd` and `quickcenter.sh`) require two arguments: a product code and the Guidewire task. Thus, to start PolicyCenter Studio, run the respective command:
+The core Dev Power-Up! launch scripts (`launcher.cmd` and `launcher.sh`) require two arguments: a product code and the Guidewire task. Thus, to start PolicyCenter Studio, run the respective command:
 
 **Windows**
 
-```quickcenter pc studio```
+```launcher pc studio```
 
 **macOS**
 
-```sh quickcenter pc studio```
+```sh launcher pc studio```
 
 
 ## Product Codes and Tasks
@@ -20,8 +20,8 @@ To view the list of available tasks in version 9 and 10 of the Guidewire platfor
 
 **Windows**
 
-```quickcenter pc gwTasks```
+```launcher pc gwTasks```
 
 **macOS**
 
-```sh quickcenter pc gwTasks```
+```sh launcher pc gwTasks```

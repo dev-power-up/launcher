@@ -1,12 +1,12 @@
 # Mouse (macOS only)
 
-Use the utility `quickcreate-desktop-runner` to create a shell script icon on the Desktop.
+Use the utility `create-desktop-runner` to create a shell script icon on the Desktop.
 
 !> Ensure Terminal has proper permissions to access the Desktop.
 
-1. Using the Terminal, change the active folder to the QuickCenter Launcher bin: 
+1. Using the Terminal, change the active folder to the Dev Power-Up! Launcher bin: 
 
-```cd Guidewire/QuickCenter/launcher/bin/```
+```cd Guidewire/Dev-Power-Up/launcher/bin/```
 
 2. Run the command: 
 

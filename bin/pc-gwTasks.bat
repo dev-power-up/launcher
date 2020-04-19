@@ -1,1 +1,0 @@
-quickcenter-launcher.cmd

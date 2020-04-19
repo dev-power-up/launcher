@@ -1,8 +1,8 @@
-# QuickCenter Launcher
+# Dev Power-Up! Launcher
 > Launch your Guidewire Software applications and tasks fast!
 
 ## What is it? {docsify-ignore}
-QuickCenter Launcher is a collection of launch tools for Guidewire Software InsuranceSuite applications and tasks that will save time throughout a developer's daily workflow. 
+Dev Power-Up! Launcher is a collection of launch tools for Guidewire Software InsuranceSuite applications and tasks that will save time throughout a developer's daily workflow. 
 
 ## Features {docsify-ignore}
 - Compatible with InsuranceSuite products version 8, 9, and 10
@@ -11,4 +11,4 @@ QuickCenter Launcher is a collection of launch tools for Guidewire Software Insu
 - Create shortcuts/alias and launch from the UI
 - Support for Windows, macOS, and Linux
 
-> Haven't initialized your system yet? Check out the [QuickCenter Initialize](https://quickcenter.github.io/initialize/) guide.
+> Haven't initialized your system yet? Check out the [Dev Power-Up! Initialize](https://dev-power-up.github.io/initialize/) guide.

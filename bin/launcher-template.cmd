@@ -23,7 +23,7 @@ ECHO.
 GOTO :DONE
 
 :START
-CALL quickcenter %product% %command% %3 %4 %5 %6 %7
+CALL launcher %product% %command% %3 %4 %5 %6 %7
 
 ECHO.
 ECHO.

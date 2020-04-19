@@ -1,8 +1,8 @@
 # Setup
 
-1. Copy or clone the QuickCenter project into the parent Guidewire folder. 
+1. Copy or clone the Dev Power-Up! project into the parent Guidewire folder. 
    
-QuickCenter can exist in any location, but it may be helpful to maintain this structure if multiple projects or workspaces exist. For example, some may have the Guidewire base configuration available locally as well as the suite of configured code. 
+Dev Power-Up! can exist in any location, but it may be helpful to maintain this structure if multiple projects or workspaces exist. For example, some may have the Guidewire base configuration available locally as well as the suite of configured code. 
 
 ```text
 └── Guidewire
@@ -12,7 +12,7 @@ QuickCenter can exist in any location, but it may be helpful to maintain this st
         ├── ClaimCenter8
         ├── ContactManager
         ├── PolicyCenter
-    └── QuickCenter
+    └── Dev-Power-Up
 ```
 
 2. Modify the InsuranceSuite paths and available products in the `local.properties` file. 
@@ -37,11 +37,11 @@ available.product.codes=pc,pcbase,bc
 **macOS**
 ```text
 # InsuranceSuite paths
-bc.path=/Users/jpollone/Guidewire/Suite/BillingCenter/
-cc.path=/Users/jpollone/Guidewire/Suite/ClaimCenter/
-cc8.path=/Users/jpollone/Guidewire/Suite/ClaimCenter8/
-cm.path=/Users/jpollone/Guidewire/Suite/ContactManager/
-pc.path=/Users/jpollone/Guidewire/Suite/PolicyCenter/
+bc.path=/Users/yourusername/Guidewire/Suite/BillingCenter/
+cc.path=/Users/yourusername/Guidewire/Suite/ClaimCenter/
+cc8.path=/Users/yourusername/Guidewire/Suite/ClaimCenter8/
+cm.path=/Users/yourusername/Guidewire/Suite/ContactManager/
+pc.path=/Users/yourusername/Guidewire/Suite/PolicyCenter/
 
 # Availability 
 available.product.codes=bc,cc,cc8,cm,pc
