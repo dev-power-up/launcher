@@ -47,7 +47,7 @@ pc.path=/Users/yourusername/Guidewire/Suite/PolicyCenter/
 available.product.codes=bc,cc,cc8,cm,pc
 ```
 
-!> If the repository is a clone, set the local git index to ignore any changes to this file:
+!> If the Dev Power-Up! Launcher folder was cloned, set the local git index to ignore any changes to the local properties file:
     
 ```git update-index --assume-unchanged local.properties```
 
