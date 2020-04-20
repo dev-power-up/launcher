@@ -18,25 +18,19 @@ die() {
 }
 
 parse_env_properties_file() {
-  # grep "${1}" "${ENV_PROPERTIES}" | sed -E 's/^[^=]*=(.*)$/\1/'
   grep "${1}" "${ENV_PROPERTIES}"|cut -d'=' -f2-
 }
 
 parse_product_properties_file() {
-  # grep "${1}" "${PRODUCT_PROPERTIES}" | sed -E 's/^[^=]*=(.*)$/\1/'
   grep "${1}" "${PRODUCT_PROPERTIES}"|cut -d'=' -f2-
 }
 
-
 MY_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-
-# echo "$MY_ROOT"
 
 # TODO Extend to additional environments
 ENV_PROPERTIES="${MY_ROOT}/../local.properties"
 PRODUCTS_AVAILABLE=$(parse_env_properties_file 'available.product.codes')
 
-# echo "$ENV_PROPERTIES"
 if [ -z "$1" ]; then
   die "Please supply one of these product types: $PRODUCTS_AVAILABLE"
 elif [ -z "$2" ]; then
@@ -50,7 +44,6 @@ GW_PRODUCT=${PRODUCT_CODE%.*}
 echo  Launching "$GW_PRODUCT" "$2"
 echo "======================================================================"
 echo
-# echo "$PRODUCT_DIR"
 
 # Validate the path exists with the passes product code
 if [ ! -d "$PRODUCT_DIR" ]; then
@@ -62,10 +55,6 @@ fi
 PRODUCT_PROPERTIES="${PRODUCT_DIR}modules/configuration/product.properties"
 PRODUCT_MAJORVERSION=$(parse_product_properties_file 'product.majorversion')
 PRODUCT_PATCHVERSION=$(parse_product_properties_file 'product.patchversion')
-
-# echo "$PRODUCT_PROPERTIES"
-# echo "$PRODUCT_MAJORVERSION"
-# echo "$PRODUCT_PATCHVERSION"
 
 # Set the JDK version based on the product
 if [ "$PRODUCT_MAJORVERSION" == "10" ] && [ "$PRODUCT_PATCHVERSION" == "2" ]; then
