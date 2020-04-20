@@ -4,7 +4,7 @@ The core Dev Power-Up! launch scripts (`launcher.cmd` and `launcher.sh`) require
 
 **Windows**
 
-```launcher pc studio```
+```launcher.cmd pc studio```
 
 **macOS**
 
@@ -20,7 +20,7 @@ To view the list of available tasks in version 9 and 10 of the Guidewire platfor
 
 **Windows**
 
-```launcher pc gwTasks```
+```launcher.cmd pc gwTasks```
 
 **macOS**
 
