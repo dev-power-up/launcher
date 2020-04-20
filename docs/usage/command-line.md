@@ -2,9 +2,13 @@
 
 **Windows**
 
+1. Add the folder to the search path:
+
+```SET Path=c:\Guidewire\Dev-Power-Up\launcher\bin;%Path%```
+
 1. Launch the script from the command line by supplying the product and any Guidewire task:
 
-```C:\>c:\Guidewire\Dev-Power-Up\bin\launcher.cmd bc studio```
+```C:\>launcher.cmd bc studio```
 
 
 **macOS**

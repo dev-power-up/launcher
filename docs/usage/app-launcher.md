@@ -8,8 +8,6 @@
 
 3. Add the script folder to the app launcher index.
 
-
-
 4. Assign an abbreviation to an app and task. For example, to launch ```pc-studio```, assign ```pcs``` as the abbreviation.
 
 ![](../_assets/launchbar.png)
