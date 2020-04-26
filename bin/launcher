@@ -57,10 +57,10 @@ PRODUCT_MAJORVERSION=$(parse_product_properties_file 'product.majorversion')
 PRODUCT_PATCHVERSION=$(parse_product_properties_file 'product.patchversion')
 
 # Set the JDK version based on the product
-if [ "$PRODUCT_MAJORVERSION" == "10" ] && [ "$PRODUCT_PATCHVERSION" == "2" ]; then
+if [ "$PRODUCT_MAJORVERSION" -eq "10" ] && [ "$PRODUCT_PATCHVERSION" -gt "1" ]; then
   JAVA_PROP="java11.path"
   launcher="./gwb"
-elif [ "$PRODUCT_MAJORVERSION" == "8" ] ; then
+elif [ "$PRODUCT_MAJORVERSION" -eq "8" ] ; then
   JAVA_PROP="java17.path"
   launcher="bin/gw'${PRODUCT_CODE}'"
 else

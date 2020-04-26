@@ -55,12 +55,12 @@ REM Set the JDK version and launcher based on the product
 SET JAVA_DIR=%java18.path%
 SET LAUNCHER=gwb.bat
 
-IF %product.majorversion%==10 (  
-    IF %product.patchversion% == 2 (
+IF %product.majorversion% EQU 10 (  
+    IF %product.patchversion% GEQ 2 (
         SET JAVA_DIR=%java11.path%
     )
 )
-IF %product.majorversion% == 8 (
+IF %product.majorversion% EQU 8 (
     set JAVA_DIR=%java11.path%
     set LAUNCHER=bin\gw%product.code%.bat
 )
