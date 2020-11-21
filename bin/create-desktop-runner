@@ -38,11 +38,11 @@ if [ -z "$GWPRODUCT" ]; then
 	die "A product type was not entered, so we're exiting. Please try again."
 fi	
 
-echo "What is the Guidewire task?"
+echo "What is the task?"
 read -r GWCOMMAND
 
 if [ -z "$GWCOMMAND" ]; then
-	die "A Guidewire task was not enter so we're exiting. Please try again!"
+	die "A task was not enter so we're exiting. Please try again!"
 fi
 
 # create the shell script
