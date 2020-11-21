@@ -39,6 +39,7 @@ fi
 
 PRODUCT_CODE="$1.path"
 PRODUCT_DIR=$(parse_env_properties_file "$PRODUCT_CODE")
+PRODUCT_VERSION_PATH=$(parse_env_properties_file 'product.version.path')
 GW_PRODUCT=${PRODUCT_CODE%.*}
 
 echo  Launching "$GW_PRODUCT" "$2"
@@ -52,21 +53,13 @@ structure in the properties file is proper"
 fi
 
 # Retrieve the product major version in order to set the JDK and launch command
-PRODUCT_PROPERTIES="${PRODUCT_DIR}modules/configuration/product.properties"
-PRODUCT_MAJORVERSION=$(parse_product_properties_file 'product.majorversion')
-PRODUCT_PATCHVERSION=$(parse_product_properties_file 'product.patchversion')
+PRODUCT_PROPERTIES=${PRODUCT_DIR}${PRODUCT_VERSION_PATH}
+PRODUCT_JAVA_VERSION=$(parse_product_properties_file 'product.java.version')
 
-# Set the JDK version based on the product
-if [ "$PRODUCT_MAJORVERSION" -eq "10" ] && [ "$PRODUCT_PATCHVERSION" -gt "1" ]; then
-  JAVA_PROP="java11.path"
-  launcher="./gwb"
-elif [ "$PRODUCT_MAJORVERSION" -eq "8" ] ; then
-  JAVA_PROP="java17.path"
-  launcher="bin/gw'${PRODUCT_CODE}'"
-else
-  JAVA_PROP="java18.path"
-  launcher="./gwb"
-fi
+# Set the JDK version and launcher command based on the product
+# (may need to change launcher command for older products)
+JAVA_PROP="java"${PRODUCT_JAVA_VERSION}".path"
+launcher="./gwb"
 
 JAVA_DIR="$(parse_env_properties_file "$JAVA_PROP")"
 export JAVA_HOME=$JAVA_DIR
