@@ -2,7 +2,7 @@
 
 A collection of launch tools for Guidewire Software.
 
-> Haven't initialized your system yet? Check out the [Dev Power-Up! Initialize](https://github.com/dev-power-up/initialize/) guide.
+> Haven't initialized your system yet? Check out the [Dev Power-Up! Initialize](https://github.com/dev-power-up/launcher/) guide.
 
 ## Documentation
 
