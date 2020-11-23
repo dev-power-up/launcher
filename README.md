@@ -2,11 +2,11 @@
 
 A collection of launch tools for Guidewire Software.
 
-> Haven't initialized your system yet? Check out the [Dev Power-Up! Initialize](https://github.com/dev-power-up/launcher/) guide.
+> Haven't initialized your system yet? Check out the [Dev Power-Up! Initialize](https://dev-power-up.github.io/initialize/) guide.
 
 ## Documentation
 
-* [Dev Power-Up! Launcher](https://github.com/dev-power-up/launcher/)
+* [Dev Power-Up! Launcher](https://dev-power-up.github.io/launcher/)
 
 ## Features
 - Compatible with InsuranceSuite products version 8, 9, and 10
