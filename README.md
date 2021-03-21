@@ -21,9 +21,9 @@ Dev Power-Up! is a set of tools developers use with Guidewire Software implement
 
 ## History & Inception
 
-Joseph has been a Mac advocate for many years and was excited to run all Guidewire centers on his MacBook as an employee of Guidewire Software in 2006. Although performance and the user interface were dodgy back then, Joseph wrote several shell scripts to enhance his workflow.
+I am an advocate of both the macOS and productivity improvement and I was excited to run all Guidewire centers on my MacBook as an employee of Guidewire Software in 2006. Although performance and the user interface were dodgy back then, I wrote several shell scripts to enhance my workflow.
 
-As such, I crafted the initial iteration of tools for macOS, but transformed the same set of scripts for Windows parity. These tools simplify daily work and I hope it helps simplifies yours.
+I crafted the initial iteration of tools for macOS, but transformed the same set of scripts for Windows parity. These tools simplify my daily work and I hope it helps simplifies yours.
 
 ## Project Maintainer
 
