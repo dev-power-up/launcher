@@ -11,4 +11,3 @@ Screen demo converted to SVG with [svg-term-cli](https://github.com/marionebl/sv
 ## Project Maintainers
 
 - [Joseph Pollone](https://www.linkedin.com/in/joseph-pollone-402725195/)
-- [Jeff Rhodes](https://www.linkedin.com/in/jeffdrhodes/)
