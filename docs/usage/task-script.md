@@ -13,11 +13,11 @@ Call Dev Power-Up! from another script or alias/synlink and pass the required ar
 
 ```cd C:\Guidewire\Dev-Power-Up\launcher\bin```
 
-```mklink pc-gwTasks.cmd launcher-task.cmd```
+```mklink pc_gwTasks.cmd launcher-task.cmd```
 
 3. Launch the alias/symlink from the command prompt/terminal in any location:
 
-```pc-gwTasks.cmd```
+```pc_gwTasks.cmd```
 
 
 **macOS**
@@ -30,8 +30,8 @@ Call Dev Power-Up! from another script or alias/synlink and pass the required ar
 
 ```cd Guidewire/Dev-Power-Up/launcher/bin/```
 
-```ln -s launcher-task pc-gwTasks```
+```ln -s launcher-task pc_gwTasks```
 
 3. Launch the alias/symlink from the command prompt/terminal in any location:
 
-```sh pc-gwTasks```
+```sh pc_gwTasks```
