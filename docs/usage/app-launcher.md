@@ -14,6 +14,6 @@
 
 5. Invoke the app launcher, type the abbreviation, and hit the return key. 
 
-    In this example Launchbar is invoked with ```CMD-Space```. The abbreviation ```PCS``` is typed and the related action ```pc-studio``` is launched. 
+    In this example Launchbar is invoked with ```CMD-Space```. The abbreviation ```PCS``` is typed and the related action ```pc_studio``` is launched. 
 
 ![](../_assets/launchbar-pc-studio.png)
