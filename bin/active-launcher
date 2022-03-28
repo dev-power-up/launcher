@@ -28,7 +28,7 @@ parse_product_properties_file() {
 MY_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # TODO Extend to additional environments
-ENV_PROPERTIES="${MY_ROOT}/../local.properties"
+ENV_PROPERTIES="${MY_ROOT}/../macos.local.properties"
 PRODUCTS_AVAILABLE=$(parse_env_properties_file 'available.product.codes')
 
 if [ -z "$1" ]; then
