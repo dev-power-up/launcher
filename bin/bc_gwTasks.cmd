@@ -10,12 +10,6 @@ IF {%1}=={/?}        GOTO :HELP
 GOTO :START
 
 :HELP
-
-
-echo %product%
-echo %command%
-echo %1
-
 ECHO.
 ECHO   ----------------------------------------------------------------------
 ECHO   Launcher for InsuranceSuite commands
@@ -29,11 +23,6 @@ ECHO.
 GOTO :DONE
 
 :START
-
-echo %product%
-echo %command%
-echo %1
-
 CALL active-launcher %product% %command% %3 %4 %5 %6 %7
 
 ECHO.
