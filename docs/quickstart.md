@@ -8,7 +8,7 @@ The core Dev Power-Up! launch scripts (`launcher.cmd` and `launcher.sh`) require
 
 **macOS**
 
-```sh launcher pc studio```
+```sh action-launcher pc studio```
 
 
 ## Product Codes and Tasks
@@ -24,4 +24,4 @@ To view the list of available tasks in version 9 and 10 of the platform, run the
 
 **macOS**
 
-```sh launcher pc gwTasks```
+```sh action-launcher pc gwTasks```

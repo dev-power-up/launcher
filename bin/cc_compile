@@ -16,4 +16,4 @@ if [ "$(uname)" = "Darwin" ] && [ "$HOME" = "$PWD" ]; then
   cd "$(dirname "$0")"
 fi
 
-sh launcher "$GWPRODUCT" "$GWCOMMAND"
+sh action-launcher "$GWPRODUCT" "$GWCOMMAND"

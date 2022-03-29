@@ -19,4 +19,4 @@
 
 2. Launch the script from the terminal by supplying the product and any Guidewire task:
 
-```sh launcher bc studio```
+```sh action-launcher bc studio```
